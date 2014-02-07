@@ -5,6 +5,14 @@ require "rake/rdoctask"
 require "rake/clean"
 require 'lib/disqus/version'
 
+task :console do
+  require 'irb'
+  require 'irb/completion'
+  require 'disqus'
+  ARGV.clear
+  IRB.start
+end
+
 CLEAN << "pkg" << "doc" << "coverage"
 
 Rake::GemPackageTask.new(eval(File.read("disqus.gemspec"))) { |pkg| }
